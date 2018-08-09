@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
+console.log(__dirname)
+
 module.exports = {
     optimization: {
         splitChunks: {
@@ -20,13 +22,15 @@ module.exports = {
             "redux-devtools",
             "redux-thunk"
         ],
-        index: "./src/index.tsx"
+        index: path.resolve(__dirname, './src/index.tsx')
     },
     output: {
         filename: '[name].js',
         path: __dirname + "/dist",
         publicPath: '/'
     },
+
+    watch: true,
 
     // Enable sourcemaps for debugging webpack's output.
     devtool: "source-map",
