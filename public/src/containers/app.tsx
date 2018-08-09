@@ -7,6 +7,7 @@ import {
 
 
 import { Hello } from "../components/Hello";
+import List from '../containers/List';
 
 export default class App extends React.Component {
     render() {
@@ -17,13 +18,16 @@ export default class App extends React.Component {
                         <>
                             <h3>首页</h3>
                             <ul>
-                                <Link to='/hello'>hello</Link>
+                                <li><Link to='/hello'>hello</Link></li>
+                                <li><Link to='/list'>list</Link></li>
                             </ul>
                         </>
                     )} />
+
                     <Route path='/hello' render={() => (
                         <Hello compiler="TypeScript" framework="React" />
                     )} />
+                    <Route path='/list' component={List} />
                 </div>
             </Router>
         )

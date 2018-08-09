@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
-const test = () => { return 0 }
+import { list } from './list';
+
 export default combineReducers({
-    test
+    list
 });

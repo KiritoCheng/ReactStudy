@@ -1,0 +1,21 @@
+{
+    "book1": {
+        "id": 1,
+        "name": "算法导论",
+        "href": "https://book.douban.com/subject/1885170/",
+        "type": "计算机类",
+        "author": "[美] Thomas H.Corme"
+    },
+    "book2": {
+        "name": "suresh",
+        "password": "password2",
+        "profession": "librarian",
+        "id": 2
+    },
+    "book3": {
+        "name": "ramesh",
+        "password": "password3",
+        "profession": "clerk",
+        "id": 3
+    }
+}
