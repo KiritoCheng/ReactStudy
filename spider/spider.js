@@ -18,6 +18,7 @@ function startRequest(url, start, callback) {
             let data = {}
             if ($('body').find('li').text().indexOf('呃...你想访问的页面不存在') == -1 && $('#info').html() !== null) {
                 data.Grade = Number($('.rating_num').html()) //评分
+                data.Name = $('#wrapper').find('h1').text().trim()
                 let vals = $('#info').html().split('<br>').map((k) => {
                     let text = $(k).text().trim().split(':');
                     let key = () => {
@@ -69,7 +70,7 @@ function startRequest(url, start, callback) {
 
 var p1 = [];
 // 2000000
-for (var i = 1000001; i < 1000010; i++) {
+for (var i = 1000001; i < 1000100; i++) {
     p1.push(new Promise((resolve, reject) => {
         startRequest(encodeURI(`https://book.douban.com/subject/${i}/`), i, (data) => {
             return resolve(data)
