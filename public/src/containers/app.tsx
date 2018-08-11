@@ -4,13 +4,27 @@ import {
     Route,
     Link
 } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 
 import { Hello } from "../components/Hello";
-import List from '../containers/List';
+import List from './List';
+import Login from './Login';
 
-export default class App extends React.Component {
+
+interface LoginState {
+    isLogin: String;
+}
+
+
+
+class App extends React.Component<LoginState, any> {
+
     render() {
+        if (!this.props.isLogin) {
+            return <Login />
+        }
+
+
         return (
             <Router>
                 <div>
@@ -33,3 +47,12 @@ export default class App extends React.Component {
         )
     }
 }
+
+
+const propsToState = (state: any) => {
+    return {
+        isLogin: state.login
+    }
+}
+
+export default connect<LoginState,any,any>(propsToState, null)(App);
