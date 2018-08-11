@@ -18,7 +18,6 @@ var server = app.listen(9000, function () {
 
     var host = server.address().address
     var port = server.address().port
-
+	host = host=='::'?"localhost":host;
     console.log("应用实例，访问地址为 http://%s:%s", host, port)
-
 })

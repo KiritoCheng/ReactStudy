@@ -1,12 +1,15 @@
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { List, ListDataProps, ListEventProps } from '../components/List';
-import { getList } from '../actions/list';
+import { getList, delItem } from '../actions/list';
+import { login } from '../actions/login';
 
 const mapToState = (state: any) => {
-    console.log(state.list)
+    console.log("state:"+state.login);
+
     return {
-        list: state.list
+        list: state.list,
+        success: state.login
     }
 }
 
@@ -14,6 +17,10 @@ const mapToProps = (dispatch: ThunkDispatch<any, any, any>) => {
     return {
         componentDidMount: () => {
             dispatch(getList())
+        }
+        ,
+        onDelItem: (i: number) => {
+            dispatch(delItem(i))
         }
     }
 }
