@@ -4,11 +4,16 @@ var bodyParser = require('body-parser');//node.js 中间件，用于处理 JSON,
 var path = require('path');
 var app = express();
 
+var list = require('./book/list')
+
 // 载入中间件
 app.use(express.static(path.join(__dirname, '../public/dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+
+list(app)
 
 app.get('*', function (req, res) {
     res.sendFile(path.resolve(__dirname, '../public/dist', 'index.html'))
