@@ -9,13 +9,13 @@ export interface InputEventProps {
 
 const mapToProps = (dispatch: ThunkDispatch<any, any, any>) => {
     return {
-        onSubmit: (text:String) => {
+        onSubmit: (text: String) => {
             dispatch(addItem(text));
         }
     }
 }
 
- class AddItem extends React.Component<InputEventProps, any>{
+class AddItem extends React.Component<InputEventProps, any>{
     private input: HTMLInputElement;
 
     handleSubmit(e: any) {
@@ -42,4 +42,4 @@ const mapToProps = (dispatch: ThunkDispatch<any, any, any>) => {
 
 }
 
-export default connect(null,mapToProps)(AddItem);
+export default connect(null, mapToProps)(AddItem);

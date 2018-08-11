@@ -21,9 +21,9 @@ interface LoginState {
 class App extends React.Component<LoginState, any> {
 
     render() {
-        if (!this.props.isLogin) {
-            return <Login />
-        }
+        // if (!this.props.isLogin) {
+        //     return <Login />
+        // }
 
 
         return (
