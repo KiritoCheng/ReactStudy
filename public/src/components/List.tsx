@@ -1,9 +1,8 @@
 import * as React from "react";
-import AddItem from '../containers/AddItem'
-import { join } from "path";
+import AddItem from '../containers/AddItem';
+
 export interface ListDataProps {
     list: any[]
-    success: boolean;
 }
 
 export interface ListEventProps {

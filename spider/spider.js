@@ -1,4 +1,5 @@
 var https = require("https");
+var request = require('request')
 var cheerio = require('cheerio');
 var fs = require("fs");
 var i = 0;
@@ -19,7 +20,7 @@ function startRequest(url, start, callback) {
             if ($('body').find('li').text().indexOf('呃...你想访问的页面不存在') == -1 && $('#info').html() !== null) {
                 data.Grade = Number($('.rating_num').html())
                 data.Name = $('#wrapper').find('h1').text().trim()
-                data.Img = $('#mainpic').find('img').attr('src')
+                data.Img = `http://localhost:9000/spider/imgs${i}.jpg`
 
                 let vals = $('#info').html().split('<br>').map((k) => {
                     let text = $(k).text().trim().split(':');
@@ -73,6 +74,8 @@ function startRequest(url, start, callback) {
 var p1 = [];
 // 2000000
 for (var i = 1000001; i < 1000100; i++) {
+    request(`https://img3.doubanio.com/view/subject/l/public/s${i}.jpg`)
+        .pipe(fs.createWriteStream('./imgs/' + i + '.jpg'))
     p1.push(new Promise((resolve, reject) => {
         startRequest(encodeURI(`https://book.douban.com/subject/${i}/`), i, (data) => {
             return resolve(data)

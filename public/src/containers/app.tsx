@@ -9,10 +9,11 @@ import { connect } from 'react-redux';
 import { Hello } from "../components/Hello";
 import List from './List';
 import Login from './Login';
+import Book from './pages/Book';
 
 
 interface LoginState {
-    isLogin: String;
+    isLogin: boolean;
 }
 
 
@@ -34,6 +35,7 @@ class App extends React.Component<LoginState, any> {
                             <ul>
                                 <li><Link to='/hello'>hello</Link></li>
                                 <li><Link to='/list'>list</Link></li>
+                                <li><Link to='/book'>BookPage</Link></li>
                             </ul>
                         </>
                     )} />
@@ -42,6 +44,7 @@ class App extends React.Component<LoginState, any> {
                         <Hello compiler="TypeScript" framework="React" />
                     )} />
                     <Route path='/list' component={List} />
+                    <Route path='/book' component={Book} />
                 </div>
             </Router>
         )
@@ -55,4 +58,4 @@ const propsToState = (state: any) => {
     }
 }
 
-export default connect<LoginState,any,any>(propsToState, null)(App);
+export default connect<LoginState, any, any>(propsToState, null)(App);
