@@ -17,8 +17,10 @@ function startRequest(url, start, callback) {
             var $ = cheerio.load(html, { decodeEntities: false });
             let data = {}
             if ($('body').find('li').text().indexOf('呃...你想访问的页面不存在') == -1 && $('#info').html() !== null) {
-                data.Grade = Number($('.rating_num').html()) //评分
+                data.Grade = Number($('.rating_num').html())
                 data.Name = $('#wrapper').find('h1').text().trim()
+                data.Img = $('#mainpic').find('img').attr('src')
+
                 let vals = $('#info').html().split('<br>').map((k) => {
                     let text = $(k).text().trim().split(':');
                     let key = () => {
