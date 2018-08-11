@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { Hello } from "../components/Hello";
 import List from './List';
 import Login from './Login';
+import Books from './Book';
 
 
 interface LoginState {
@@ -34,6 +35,7 @@ class App extends React.Component<LoginState, any> {
                             <ul>
                                 <li><Link to='/hello'>hello</Link></li>
                                 <li><Link to='/list'>list</Link></li>
+                                <li><Link to='/books'>books</Link></li>
                             </ul>
                         </>
                     )} />
@@ -42,6 +44,7 @@ class App extends React.Component<LoginState, any> {
                         <Hello compiler="TypeScript" framework="React" />
                     )} />
                     <Route path='/list' component={List} />
+                    <Route path='/books' component={Books} />
                 </div>
             </Router>
         )

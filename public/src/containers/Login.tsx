@@ -15,7 +15,6 @@ const propToState = (state: any) => {
 const propToDisplay = (dispatch: ThunkDispatch<any, any, any>) => {
     return {
         onClick: (username: string, password: string) => {
-            console.log(123)
             dispatch(login(username, password))
         }
     }
