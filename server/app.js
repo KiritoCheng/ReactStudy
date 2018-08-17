@@ -7,6 +7,7 @@ var app = express();
 
 // 载入中间件
 app.use(express.static(path.join(__dirname, '../public/dist')));
+app.use('/spider/imgs', express.static(path.join(__dirname, '../spider/imgs')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -23,6 +24,6 @@ var server = app.listen(9000, function () {
 
     var host = server.address().address
     var port = server.address().port
-	host = host=='::'?"localhost":host;
+    host = host == '::' ? "localhost" : host;
     console.log("应用实例，访问地址为 http://%s:%s", host, port)
 })

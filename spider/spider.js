@@ -18,9 +18,10 @@ function startRequest(url, start, callback) {
             var $ = cheerio.load(html, { decodeEntities: false });
             let data = {}
             if ($('body').find('li').text().indexOf('呃...你想访问的页面不存在') == -1 && $('#info').html() !== null) {
+                data.ID = start
                 data.Grade = Number($('.rating_num').html())
                 data.Name = $('#wrapper').find('h1').text().trim()
-                data.Img = `http://localhost:9000/spider/imgs${i}.jpg`
+                data.Img = `http://localhost:9000/spider/imgs/${start}.jpg`
 
                 let vals = $('#info').html().split('<br>').map((k) => {
                     let text = $(k).text().trim().split(':');
@@ -63,7 +64,7 @@ function startRequest(url, start, callback) {
                 })
 
             }
-            callback({ [`${start}`]: data })
+            callback({ 'data': data })
         });
     }).on("error", function () {
         console.log("error");
@@ -73,9 +74,9 @@ function startRequest(url, start, callback) {
 
 var p1 = [];
 // 2000000
-for (var i = 1000001; i < 1000100; i++) {
+for (var i = 1000001; i < 1000020; i++) {
     request(`https://img3.doubanio.com/view/subject/l/public/s${i}.jpg`)
-        .pipe(fs.createWriteStream('./imgs/' + i + '.jpg'))
+        .pipe(fs.createWriteStream('./test/' + i + '.jpg'))
     p1.push(new Promise((resolve, reject) => {
         startRequest(encodeURI(`https://book.douban.com/subject/${i}/`), i, (data) => {
             return resolve(data)
@@ -84,7 +85,7 @@ for (var i = 1000001; i < 1000100; i++) {
 }
 
 Promise.all(p1).then(values => {
-    fs.writeFile('data.json', JSON.stringify(values), function (err) {
+    fs.writeFile('test.txt', JSON.stringify(values), function (err) {
         if (err) {
             return console.error(err);
         }
