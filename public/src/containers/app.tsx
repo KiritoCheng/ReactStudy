@@ -7,18 +7,16 @@ import {
 import { connect } from 'react-redux';
 
 import { Hello } from "../components/Hello";
-import List from './List';
-import Login from './Login';
 import Book from './pages/Book';
 
 
-interface LoginState {
+interface AppDataProps {
     isLogin: boolean;
 }
 
 
 
-class App extends React.Component<LoginState, any> {
+class App extends React.Component<AppDataProps, any> {
 
     render() {
         // if (!this.props.isLogin) {
@@ -34,7 +32,6 @@ class App extends React.Component<LoginState, any> {
                             <h3>首页</h3>
                             <ul>
                                 <li><Link to='/hello'>hello</Link></li>
-                                <li><Link to='/list'>list</Link></li>
                                 <li><Link to='/book'>BookPage</Link></li>
                             </ul>
                         </>
@@ -43,7 +40,6 @@ class App extends React.Component<LoginState, any> {
                     <Route path='/hello' render={() => (
                         <Hello compiler="TypeScript" framework="React" />
                     )} />
-                    <Route path='/list' component={List} />
                     <Route path='/book' component={Book} />
                 </div>
             </Router>
@@ -52,10 +48,10 @@ class App extends React.Component<LoginState, any> {
 }
 
 
-const propsToState = (state: any) => {
+const mapToState = (state: any) => {
     return {
-        isLogin: state.login
+        isLogin: true
     }
 }
 
-export default connect<LoginState, any, any>(propsToState, null)(App);
+export default connect<AppDataProps, any, any>(mapToState, null)(App);

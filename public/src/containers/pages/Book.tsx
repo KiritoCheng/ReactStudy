@@ -4,8 +4,14 @@ import { Book, BookDataProps, BookEventProps } from '../../components/pages/Book
 import { getBookList } from '../../actions/book';
 
 const maToState = (state: any) => {
+    let list = [];
+    if (JSON.stringify(state.booklist) !== '{}') {
+        list = state.booklist.map((k: any, i: any) => {
+            return k['data']
+        })
+    }
     return {
-        list: state.booklist
+        list: list
     }
 }
 
