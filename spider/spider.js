@@ -74,9 +74,9 @@ function startRequest(url, start, callback) {
 
 var p1 = [];
 // 2000000
-for (var i = 1000001; i < 1000020; i++) {
+for (var i = 1000001; i < 1000100; i++) {
     request(`https://img3.doubanio.com/view/subject/l/public/s${i}.jpg`)
-        .pipe(fs.createWriteStream('./test/' + i + '.jpg'))
+        .pipe(fs.createWriteStream('./imgs/' + i + '.jpg'))
     p1.push(new Promise((resolve, reject) => {
         startRequest(encodeURI(`https://book.douban.com/subject/${i}/`), i, (data) => {
             return resolve(data)
